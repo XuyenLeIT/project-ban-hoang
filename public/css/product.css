@@ -1,0 +1,22 @@
+.item_image {
+    display: flex;
+  gap: 20px
+}
+.product__image{
+height: 80px;
+width: 100px;
+object-fit: contain
+}
+.icon__close {
+    position: absolute;
+    margin-top: -5px
+}
+
+.delete-image:hover .icon__close {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.removeImage {
+    display: none
+}

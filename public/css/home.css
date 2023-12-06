@@ -3,3 +3,15 @@
     height: 400px;
     object-fit: cover;
 }
+.cate_product{
+    display: flex;
+    justify-content: space-around;
+}
+.cate_item:hover{
+   background: orange !important;
+}
+.home__product-title{
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid grey;
+}
