@@ -1,7 +1,7 @@
 @extends('layouts/client_layout')
 
 @section('title', 'home page')
-
+<link rel="stylesheet" href="{{asset("css/home.css")}}">
 @section('content')
     <!-- Carousel -->
     <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -17,15 +17,15 @@
        <div class="carousel-inner">
            <div class="carousel-item active">
                <img src="https://haycafe.vn/wp-content/uploads/2022/03/Hinh-nen-que-huong-mien-Tay.jpg"
-                   alt="Los Angeles" class="d-block" style="width:100%">
+                   alt="Los Angeles" class="d-block carousel__image">
            </div>
            <div class="carousel-item">
                <img src="http://tranhphuongnguyen.com/wp-content/uploads/2017/12/tranh_phong_canh_lang_que_viet_nam-423-1.jpg"
-                   alt="Chicago" class="d-block" style="width:100%">
+                   alt="Chicago" class="d-block carousel__image">
            </div>
            <div class="carousel-item">
                <img src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180"
-                   alt="New York" class="d-block" style="width:100%">
+                   alt="New York" class="d-block carousel__image">
            </div>
        </div>
 
