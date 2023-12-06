@@ -1,3 +1,4 @@
+
 .client__header {
     height: 180px;
     background: #E48F45;
@@ -47,7 +48,7 @@
     height: 250px;
     background: #22092C;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
 
