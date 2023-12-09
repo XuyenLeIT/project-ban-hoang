@@ -49,44 +49,71 @@
                 <button class="btn btn-secondary cate_item">Vòng bi - Bạc đạn</button>
             </div>
             <div class="row gx-2 gy-2 mt-2">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img src="https://ngocanh.com/cuploads/images/baiviet/vong-bi-bearing.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                @foreach ($products as $item)
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <img src="{{ $item->images[0]->path }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $item->name }}</h5>
+                                <a href="#" class="btn btn-primary">View Detail</a>
+                            </div>
                         </div>
                     </div>
+                @endforeach
+            </div>
+            <div class="row mt-2 mb-2">
+                <div class="home__horizontal-qc">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180"
+                        class="horizontal_qc_img" />
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180"
+                        class="horizontal_qc_img" />
                 </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img src="https://ngocanh.com/cuploads/images/baiviet/vong-bi-bearing.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            </div>
+            <div class="row mb-2">
+                <h3 class="text-center">Tin mới nhất</h3>
+                <div class="home__lasted-news row gx-2 gy-2">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="card-img-bottom" src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180" alt="Card image"
+                                    style="width:100%">
+                                    <h4 class="card-title">Jane Doe</h4>
+                                    <p class="card-text">Some example text some example text. Jane Doe is an architect and
+                                        engineer</p>
+                            </div>
+                            <a href="#" class="btn btn-primary">See Profile</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img src="https://ngocanh.com/cuploads/images/baiviet/vong-bi-bearing.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="card-img-bottom" src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180" alt="Card image"
+                                    style="width:100%">
+                                    <h4 class="card-title">Jane Doe</h4>
+                                    <p class="card-text">Some example text some example text. Jane Doe is an architect and
+                                        engineer</p>
+                            </div>
+                            <a href="#" class="btn btn-primary">See Profile</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img src="https://ngocanh.com/cuploads/images/baiviet/vong-bi-bearing.jpg" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <img class="card-img-bottom" src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180" alt="Card image"
+                                    style="width:100%">
+                                    <h4 class="card-title">Jane Doe</h4>
+                                    <p class="card-text">Some example text some example text. Jane Doe is an architect and
+                                        engineer</p>
+                            </div>
+                            <a href="#" class="btn btn-primary">See Profile</a>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+    </div>
 
     </div>
 

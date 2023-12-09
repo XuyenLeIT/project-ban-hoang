@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,13 @@ Route::prefix('/admin')->group(function () {
         Route::post('/store', [ProductController::class,"store"])->name("product.store");
         Route::get('/product/edit/{id}', [ProductController::class,'edit'])->name("product.edit");
         Route::put('/product/edit/{product}', [ProductController::class,'update'])->name("product.update");
+    });
+    Route::prefix('/news')->group(function () {
+        Route::get('/', [NewsController::class,"index"])->name("news.index");
+        Route::get('/create', [NewsController::class,"create"])->name("news.create");
+        Route::post('/store', [NewsController::class,"store"])->name("news.store");
+        Route::get('/edit/{new}', [NewsController::class,"edit"])->name("news.edit");
+        Route::put('/edit/{new}', [NewsController::class,"update"])->name("news.update");
     });
 });
 
