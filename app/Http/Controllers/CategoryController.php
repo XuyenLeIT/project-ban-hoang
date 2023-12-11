@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\News;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class CategoryController extends Controller
 {
@@ -21,6 +24,11 @@ class CategoryController extends Controller
         Category::create($request->all());
         return redirect()->route("category.index")->with('success','add cate successfully');
     }
+    public function compose(view $view)
+    {
+        $categories = Category::all();
+        $view->with(compact("categories"));
+    }
     public function edit($id){
         $category = Category::find($id);
         return view("category.edit",compact("category"));
@@ -33,5 +41,14 @@ class CategoryController extends Controller
         $category->status = $request->status;
         $category->save();
         return redirect()->route("category.index")->with('success','edit cate successfully');;
+    }
+    public function detail($id)
+    {
+        $category = Category::find($id);
+        $products =  $category->products()->get();
+        $orderProducts = Product::where('category_id','!=',$id)->get();
+        $news = News::all();
+
+        return view('fe.product.category_products', compact('products','category','orderProducts','news')); 
     }
 }

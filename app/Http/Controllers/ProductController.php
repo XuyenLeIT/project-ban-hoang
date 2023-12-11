@@ -10,22 +10,23 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    public function index(){
-        $products = Product::with('category','images')->get();
+    public function index()
+    {
+        $products = Product::with('category', 'images')->get();
         return view('product.index', compact('products'));
     }
     public function create()
     {
         $categories = Category::all();
-        return view('product.create',compact("categories"));
+        return view('product.create', compact("categories"));
     }
     public function store(Request $request)
-    {  
+    {
         $request->validate([
             'name' => 'required',
             'quantity' => 'required|numeric',
             'price' => 'required|numeric',
-            'images'=>'required',
+            'images' => 'required',
             'images.*' => 'image|mimes:jpeg,png,jpg|max:2048'
         ]);
 
@@ -37,7 +38,7 @@ class ProductController extends Controller
             'category_id' => $request->category_id
         ]);
 
-        if($request->hasFile('images')) {
+        if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $filename = time() . '_' . $image->getClientOriginalName();
                 $destinationPath = public_path('product_images');
@@ -56,16 +57,16 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $product = Product::find($id);
-        if($product != null){
+        if ($product != null) {
             $selectedCate = $product->category->id;
-        }else{
+        } else {
             return redirect()->route('product.index')->with('error', 'Không tìm thấy sản phẩm');
         }
 
-        return view('product.edit', compact('product','categories','selectedCate')); 
+        return view('product.edit', compact('product', 'categories', 'selectedCate'));
     }
-    public function update(Request $request,Product $product)
-    {  
+    public function update(Request $request, Product $product)
+    {
         $request->validate([
             'name' => 'required',
             'price' => 'bail|required|numeric|min:10|max:2000',
@@ -91,7 +92,7 @@ class ProductController extends Controller
                 }
             }
         }
-        if($request->hasFile('images')){
+        if ($request->hasFile('images')) {
             //add new images in to images table
             foreach ($request->file('images') as $image) {
                 $filename = time() . '_' . $image->getClientOriginalName();
@@ -104,6 +105,12 @@ class ProductController extends Controller
                 $newImage->save();
             }
         }
-        return redirect()->route('product.index')->with('success', 'Product updated successfully.');;
+        return redirect()->route('product.index')->with('success', 'Product updated successfully.');
+        ;
+    }
+    public function detail($id)
+    {
+        $product = Product::find($id);
+        return view("fe.product.detail_product",compact("product"));
     }
 }

@@ -61,4 +61,9 @@ class NewsController extends Controller
         return redirect()->route('news.index')
             ->with('success', 'news updated successfully.');
     }
+    public function detail($id)
+    {
+        $news = News::find($id);
+        return view("fe.news.detail_news",compact("news"));
+    }
 }

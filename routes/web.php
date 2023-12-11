@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
+use App\Models\News;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class,"index"])->name("home.index");
+Route::get('/category/product/{id}', [CategoryController::class,"detail"])->name("category.product");
+Route::get('/product/{id}', [ProductController::class,"detail"])->name("product.detail");
+Route::get('/news/{id}', [NewsController::class,"detail"])->name("news.detail");
+
 Route::prefix('/admin')->group(function () {
     //category
     Route::prefix('/category')->group(function () {
@@ -26,6 +31,8 @@ Route::prefix('/admin')->group(function () {
         Route::post('/store', [CategoryController::class,"store"])->name("category.store");
         Route::get('/edit/{id}', [CategoryController::class,"edit"])->name("category.edit");
         Route::put('/edit/{category}', [CategoryController::class,"update"])->name("category.update");
+       
+
     });
     //product
     Route::prefix('/product')->group(function () {
