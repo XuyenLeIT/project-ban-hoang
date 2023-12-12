@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -22,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         View::composer(['layouts.client_layout'], CategoryController::class);
+        View::composer(['layouts.client_layout'], AddressController::class);
     }
 }

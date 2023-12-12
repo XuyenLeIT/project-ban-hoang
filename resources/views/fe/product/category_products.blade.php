@@ -9,27 +9,34 @@
             <h3 class="home__product-title">Sản phâm về {{ $category->name }}</h3>
             <div class="row gx-2 gy-2 mt-2">
                 <div class="col-lg-9 category__products ">
-                    @foreach ($products as $item)
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <img src="../../{{ $item->images[0]->path }}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $item->name }}</h5>
-                                    <a href="{{route("product.detail",$item->id)}}" class="btn btn-primary">View Detail</a>
+                    @if ($products->count() > 0)
+                        @foreach ($products as $item)
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <img src="../../{{ $item->images[0]->path }}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $item->name }}</h5>
+                                        <a href="{{ route('product.detail', $item->id) }}" class="btn btn-primary">View
+                                            Detail</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                    <p class="text-info text-center">Chưa có sản phẩm nào theo doanh mục</p>
+                    @endif
+
                 </div>
                 <div class="col-lg-3">
                     <h4 class="text-center">Tin tức</h4>
                     <div class="scroll-container">
-                    <ul class="news-list">
-                        @foreach ($news as $item)
-                            <li class="news__item"><a href="{{route("news.detail",$item->id)}}">{{$item->title}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
+                        <ul class="news-list">
+                            @foreach ($news as $item)
+                                <li class="news__item"><a
+                                        href="{{ route('news.detail', $item->id) }}">{{ $item->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="row mt-2 mb-2">
@@ -39,7 +46,7 @@
                 </div>
 
             </div>
-            <div class="row mb-2">
+            <div class="row mb-2 gy-2">
                 <h3 class="text-center">Sản phẩm khác</h3>
                 @foreach ($orderProducts as $item)
                     <div class="col-lg-3">
@@ -47,7 +54,7 @@
                             <img src="../../{{ $item->images[0]->path }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $item->name }}</h5>
-                                <a href="#" class="btn btn-primary">View Detail</a>
+                                <a href="{{route("product.detail",$item->id)}}" class="btn btn-primary">View Detail</a>
                             </div>
                         </div>
                     </div>

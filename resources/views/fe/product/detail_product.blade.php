@@ -27,7 +27,7 @@
                             <div class="product p-4">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center">
-                                        <i class="fa fa-long-arrow-left"></i> <span class="ml-1">Back</span>
+                                         <a class="ml-1" href="{{route("home.index")}}"><i class="fa fa-long-arrow-left"></i> Back</a>
                                     </div>
                                 </div>
                                 <div class="mt-4 mb-3">

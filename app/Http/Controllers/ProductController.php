@@ -13,12 +13,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with('category', 'images')->get();
-        return view('product.index', compact('products'));
+        return view('be.product.index', compact('products'));
     }
     public function create()
     {
         $categories = Category::all();
-        return view('product.create', compact("categories"));
+        return view('be.product.create', compact("categories"));
     }
     public function store(Request $request)
     {
@@ -63,7 +63,7 @@ class ProductController extends Controller
             return redirect()->route('product.index')->with('error', 'Không tìm thấy sản phẩm');
         }
 
-        return view('product.edit', compact('product', 'categories', 'selectedCate'));
+        return view('be.product.edit', compact('product', 'categories', 'selectedCate'));
     }
     public function update(Request $request, Product $product)
     {

@@ -12,10 +12,10 @@ class CategoryController extends Controller
 {
     public function index(){
         $categories = Category::all();
-        return view("category.index",compact("categories"));
+        return view("be.category.index",compact("categories"));
     }
     public function create(){
-        return view("category.create");
+        return view("be.category.create");
     }
     public function store(Request $request){
         $request->validate([
@@ -31,7 +31,7 @@ class CategoryController extends Controller
     }
     public function edit($id){
         $category = Category::find($id);
-        return view("category.edit",compact("category"));
+        return view("be.category.edit",compact("category"));
     }
     public function update(Request $request,Category $category){
         $request->validate([

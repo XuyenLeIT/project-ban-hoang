@@ -55,7 +55,7 @@
                             <img src="{{ $item->images[0]->path }}" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $item->name }}</h5>
-                                <a href="#" class="btn btn-primary">View Detail</a>
+                                <a href="{{route("product.detail",$item->id)}}" class="btn btn-primary">View Detail</a>
                             </div>
                         </div>
                     </div>
@@ -72,44 +72,24 @@
             </div>
             <div class="row mb-2">
                 <h3 class="text-center">Tin mới nhất</h3>
+                @if ($breakingNews->count() > 0)
                 <div class="home__lasted-news row gx-2 gy-2">
-                    <div class="col-lg-4">
+                    @foreach ($breakingNews as $item)
+                    <div class="col-lg-3">
                         <div class="card">
                             <div class="card-body">
-                                <img class="card-img-bottom" src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180" alt="Card image"
+                                <img class="card-img-bottom news_image" src="{{asset($item->image)}}" alt="Card image"
                                     style="width:100%">
-                                    <h4 class="card-title">Jane Doe</h4>
-                                    <p class="card-text">Some example text some example text. Jane Doe is an architect and
-                                        engineer</p>
+                                    <h4 class="news_title">{{$item->title}}</h4>
+                                    <p class="news_description">{{$item->description}}</p>
                             </div>
-                            <a href="#" class="btn btn-primary">See Profile</a>
+                            <a href="{{route("news.detail",$item->id)}}" class="btn btn-primary">See Profile</a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <img class="card-img-bottom" src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180" alt="Card image"
-                                    style="width:100%">
-                                    <h4 class="card-title">Jane Doe</h4>
-                                    <p class="card-text">Some example text some example text. Jane Doe is an architect and
-                                        engineer</p>
-                            </div>
-                            <a href="#" class="btn btn-primary">See Profile</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <img class="card-img-bottom" src="https://tse2.mm.bing.net/th?id=OIP.TmFSehNVCRLJ0HHFQFWNBwHaDc&pid=Api&P=0&h=180" alt="Card image"
-                                    style="width:100%">
-                                    <h4 class="card-title">Jane Doe</h4>
-                                    <p class="card-text">Some example text some example text. Jane Doe is an architect and
-                                        engineer</p>
-                            </div>
-                            <a href="#" class="btn btn-primary">See Profile</a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
+                @endif
+        
             </div>
 
         </div>

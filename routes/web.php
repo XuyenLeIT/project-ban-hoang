@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
@@ -21,8 +22,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class,"index"])->name("home.index");
 Route::get('/category/product/{id}', [CategoryController::class,"detail"])->name("category.product");
 Route::get('/product/{id}', [ProductController::class,"detail"])->name("product.detail");
+Route::get('/news', [NewsController::class,"news"])->name("fe.news.index");
 Route::get('/news/{id}', [NewsController::class,"detail"])->name("news.detail");
-
+Route::get('/address', [AddressController::class,"address"])->name("fe.address.index");
 Route::prefix('/admin')->group(function () {
     //category
     Route::prefix('/category')->group(function () {
@@ -31,8 +33,6 @@ Route::prefix('/admin')->group(function () {
         Route::post('/store', [CategoryController::class,"store"])->name("category.store");
         Route::get('/edit/{id}', [CategoryController::class,"edit"])->name("category.edit");
         Route::put('/edit/{category}', [CategoryController::class,"update"])->name("category.update");
-       
-
     });
     //product
     Route::prefix('/product')->group(function () {
@@ -49,5 +49,11 @@ Route::prefix('/admin')->group(function () {
         Route::get('/edit/{new}', [NewsController::class,"edit"])->name("news.edit");
         Route::put('/edit/{new}', [NewsController::class,"update"])->name("news.update");
     });
+        //address
+        Route::prefix('/address')->group(function () {
+            Route::get('/', [AddressController::class,"index"])->name("address.index");
+            Route::get('/edit/{address}', [AddressController::class,"edit"])->name("address.edit");
+            Route::put('/edit/{address}', [AddressController::class,"update"])->name("address.update");
+        });
 });
 

@@ -11,11 +11,17 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::all();
-        return view("news.index", compact("news"));
+        return view("be.news.index", compact("news"));
+    }
+    public function news()
+    {
+        $latestNews = News::latest()->first();
+        $news = News::where('id', '!=', $latestNews->id)->get();
+        return view("fe.news.index", compact("news","latestNews"));
     }
     public function create()
     {
-        return view("news.create");
+        return view("be.news.create");
     }
     public function store(Request $request)
     {
@@ -37,7 +43,7 @@ class NewsController extends Controller
     }
     public function edit(News $new)
     {
-        return view('news.edit', compact('new'));
+        return view('be.news.edit', compact('new'));
     }
     public function update(Request $request, News $new)
     {
