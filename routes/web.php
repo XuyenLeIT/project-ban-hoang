@@ -2,23 +2,12 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', [HomeController::class,"index"])->name("home.index");
 Route::get('/category/product/{id}', [CategoryController::class,"detail"])->name("category.product");
 Route::get('/product/{id}', [ProductController::class,"detail"])->name("product.detail");
@@ -26,6 +15,7 @@ Route::get('/news', [NewsController::class,"news"])->name("fe.news.index");
 Route::get('/news/{id}', [NewsController::class,"detail"])->name("news.detail");
 Route::get('/address', [AddressController::class,"address"])->name("fe.address.index");
 Route::prefix('/admin')->group(function () {
+    Route::get('/', [DashboardController::class,"index"])->name("dashboard.index");
     //category
     Route::prefix('/category')->group(function () {
         Route::get('/', [CategoryController::class,"index"])->name("category.index");
