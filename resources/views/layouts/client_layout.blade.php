@@ -18,7 +18,7 @@
     <div class="container-fluid gx-0">
         <div class="row client__header gx-0">
             <div class="client__header-contact">
-                <p>Hotline: {{ $address->phone }} Facebook: facebook.com/tbcn.vn</p>
+                <p>Hotline: {{ $address->phone }} Facebook: facebook.com/hoangram.vn</p>
             </div>
             <div class="client__header-search">
                 <div class="header_logo">
@@ -40,7 +40,7 @@
                                 <a class="nav-link" href="{{ route('home.index') }}">TRANG CHỦ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">GIỚI THIỆU</a>
+                                <a class="nav-link" href="{{route("fe.about.index")}}">GIỚI THIỆU</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button"

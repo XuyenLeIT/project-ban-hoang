@@ -42,11 +42,9 @@
         <div class="row">
             <h3 class="home__product-title">Sản Phẩm Nổi Bật</h3>
             <div class="cate_product">
-                <button class="btn btn-secondary cate_item">Vòng bi - Bạc đạn</button>
-                <button class="btn btn-secondary cate_item">Vòng bi - Bạc đạn</button>
-                <button class="btn btn-secondary cate_item">Vòng bi - Bạc đạn</button>
-                <button class="btn btn-secondary cate_item">Vòng bi - Bạc đạn</button>
-                <button class="btn btn-secondary cate_item">Vòng bi - Bạc đạn</button>
+                @foreach ($categories as $item)
+                <a class="btn btn-secondary cate_item" href="{{ route('category.product', $item->id) }}">{{$item->name}}</a>
+                @endforeach
             </div>
             <div class="row gx-2 gy-2 mt-2">
                 @foreach ($products as $item)

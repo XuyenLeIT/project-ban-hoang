@@ -58,6 +58,7 @@
                         <a class="collapse-item" href="{{route('product.index')}}">Product</a>
                         <a class="collapse-item" href="{{route('news.index')}}">News</a>
                         <a class="collapse-item" href="{{route('address.index')}}">Address</a>
+                        <a class="collapse-item" href="{{route('about.index')}}">About</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>

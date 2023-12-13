@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
@@ -18,6 +19,8 @@ Route::get('/address', [AddressController::class, "address"])->name("fe.address.
 Route::get('/login', [AccountController::class, "login"])->name("login.index");
 Route::post('/login', [AccountController::class, "checkLogin"])->name("login.check");
 Route::get('/logout', [AccountController::class, "logout"])->name("logout");
+Route::get('/about', [AboutController::class, "about"])->name("fe.about.index");
+
 Route::middleware(['auth.login'])->group(function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/', [DashboardController::class, "index"])->name("dashboard.index");
@@ -55,6 +58,12 @@ Route::middleware(['auth.login'])->group(function () {
             Route::get('/', [AddressController::class, "index"])->name("address.index");
             Route::get('/edit/{address}', [AddressController::class, "edit"])->name("address.edit");
             Route::put('/edit/{address}', [AddressController::class, "update"])->name("address.update");
+        });
+        //address
+        Route::prefix('/about')->group(function () {
+            Route::get('/', [AboutController::class, "index"])->name("about.index");
+            Route::get('/edit/{id}', [AboutController::class, "edit"])->name("about.edit");
+            Route::put('/edit/{about}', [AboutController::class, "update"])->name("about.update");
         });
     });
 });

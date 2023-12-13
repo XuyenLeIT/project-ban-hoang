@@ -19,3 +19,6 @@
             line-clamp: 2; 
     -webkit-box-orient: vertical;
 }
+.news__update_at{
+   color: gray;
+}

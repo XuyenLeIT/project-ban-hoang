@@ -16,8 +16,8 @@
           </div>
           <!-- Article data -->
           <div class="row mb-3">
-            <div class="col-6 text-start">
-              <u>{{$latestNews->updated_at}}</u>
+            <div class="col-6 text-start news__update_at">
+              <i>{{$latestNews->updated_at}}</i>
             </div>
           </div>
           <!-- Article title and description -->
@@ -38,11 +38,10 @@
                 <img src="{{asset($item->image)}}"
                   class="img-fluid shadow-1-strong rounded" alt="Hollywood Sign on The Hill" />
               </div>
-      
               <div class="col-9">
                 <p class="mb-2"><strong class="news_title">{{$item->title}}</strong></p>
-                <p>
-                  <u>{{$item->updated_at}}</u>
+                <p class="news__update_at">
+                  <i class="news__update_at">{{$item->updated_at}}</i>
                 </p>
                 <p class="news_decription">
                     {{$item->description}}
