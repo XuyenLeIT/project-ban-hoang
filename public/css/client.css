@@ -1,6 +1,9 @@
+.client__header-navbar {
+    z-index: 999;
+}
 
 .client__header {
-    height: 180px;
+    height: 200px;
     background: #E48F45;
     padding: 5px;
 }
@@ -32,11 +35,13 @@
 }
 
 .header_hotline {
-
     flex: 1;
     text-align: right;
+    color: black;
+    font-weight: bold;
 }
-.navbar-nav{
+
+.navbar-nav {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -44,8 +49,9 @@
     font-weight: bold;
     color: white;
 }
+
 .client__footer {
-    height: 250px;
+    padding: 10px;
     background: #22092C;
     display: flex;
     justify-content: space-around;
@@ -68,7 +74,9 @@
 
 }
 
-.client__footer-map {
-    /* width: 100%; */
 
+@media only screen and (max-width: 600px) {
+    .header_hotline{
+        display: none;
+    }
 }

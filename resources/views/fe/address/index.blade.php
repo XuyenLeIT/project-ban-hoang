@@ -17,29 +17,48 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="col-lg-7">
+                @if (session("success"))
+                <div class="alert alert-success">
+                    <strong>Success!</strong> {{session("success")}}
+                  </div>
+                @endif
                 <h2>Gửi thông tin</h2>
-                <p>Hoạt động của TBCN.VN nhằm kết nối nhu cầu giữa người muốn mua hàng và người có hàng tồn kho nhằm thỏa
+                <p>Hoạt động của Chúng tôi nhằm kết nối nhu cầu giữa người muốn mua hàng và người có hàng tồn kho nhằm thỏa
                     mãn nhu cầu của cả hai bên.
                     Bạn hãy điền nội dung tin nhắn vào form dưới đây và gửi cho chúng tôi. Chúng tôi sẽ trả lời bạn sau khi
                     nhận được.</p>
-                <form action="/action_page.php">
+                <form action="{{ route('fe.sendMail') }}" method="POST">
+                    @csrf
                     <div class="row mb-3 mt-3">
-                        <div class="col-lg-6">
-                            <label for="name">Name:</label>
-                            <input type="name" class="form-control" placeholder="Enter name" name="name">
-                        </div>
-                        <div class="col-lg-6">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" placeholder="Enter email" name="email">
-                        </div>
+                        <label for="name">Subject:</label>
+                        <input type="name" class="form-control" value="{{ old('name') }}" placeholder="Enter name"
+                            name="name">
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                    <div class="row mb-3 mt-3">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" value="{{ old('email') }}" placeholder="Enter email"
+                            name="email">
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="phone">Phone:</label>
-                        <input type="phone" class="form-control" placeholder="Enter phone" name="phone">
+                        <input type="phone" class="form-control" value="{{ old('phone') }}" placeholder="Enter phone"
+                            name="phone">
+                        @error('phone')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="mb-3 mt-3">
                         <label for="content">Nội dung:</label>
-                        <textarea class="form-control" name="content"></textarea>
+                        <textarea class="form-control" name="content">{{ old('content') }}</textarea>
+                        @error('content')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

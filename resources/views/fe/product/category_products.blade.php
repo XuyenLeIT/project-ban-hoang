@@ -7,11 +7,11 @@
     <div class="container">
         <div class="row">
             <h3 class="home__product-title">Sản phâm về {{ $category->name }}</h3>
-            <div class="row gx-2 gy-2 mt-2">
-                <div class="col-lg-9 category__products ">
+            <div class="row gx-2 gy-2 mt-2 me-0 ms-0">
+                <div class="row gy-2 col-lg-9">
                     @if ($products->count() > 0)
                         @foreach ($products as $item)
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <img src="../../{{ $item->images[0]->path }}" class="card-img-top" alt="...">
                                     <div class="card-body">
@@ -27,7 +27,7 @@
                     @endif
 
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 col-sm-12 col-md-12">
                     <h4 class="text-center">Tin tức</h4>
                     <div class="scroll-container">
                         <ul class="news-list">
@@ -46,7 +46,7 @@
                 </div>
 
             </div>
-            <div class="row mb-2 gy-2">
+            <div class="row mb-2 gy-2 me-0 ms-0">
                 <h3 class="text-center">Sản phẩm khác</h3>
                 @foreach ($orderProducts as $item)
                     <div class="col-lg-3">

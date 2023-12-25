@@ -61,8 +61,9 @@
                         <a class="collapse-item" href="{{route('about.index')}}">About</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="{{route('mail.index')}}">Mail</a>
+                        <a class="collapse-item" href="{{route('carausel.index')}}">Carausel</a>
+                        <a class="collapse-item" href="{{route('banner.index')}}">Banner</a>
                     </div>
                 </div>
             </li>

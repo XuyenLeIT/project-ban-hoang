@@ -3,9 +3,12 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\CaraulselController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -20,10 +23,26 @@ Route::get('/login', [AccountController::class, "login"])->name("login.index");
 Route::post('/login', [AccountController::class, "checkLogin"])->name("login.check");
 Route::get('/logout', [AccountController::class, "logout"])->name("logout");
 Route::get('/about', [AboutController::class, "about"])->name("fe.about.index");
+Route::post('/mail', [MailController::class, "sendMail"])->name("fe.sendMail");
 
 Route::middleware(['auth.login'])->group(function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/', [DashboardController::class, "index"])->name("dashboard.index");
+        Route::get('/mail', [MailController::class, "index"])->name("mail.index");
+        //carausel
+        Route::prefix('/carausel')->group(function () {
+            Route::get('/', [CaraulselController::class, "index"])->name("carausel.index");
+            Route::get('/create', [CaraulselController::class, "create"])->name("carausel.create");
+            Route::post('/create', [CaraulselController::class, "store"])->name("carausel.store");
+            Route::get('/delete/{id}', [CaraulselController::class, "delete"])->name("carausel.delete");
+        });
+        //banner
+        Route::prefix('/banner')->group(function () {
+            Route::get('/', [BannerController::class, "index"])->name("banner.index");
+            Route::get('/create', [BannerController::class, "create"])->name("banner.create");
+            Route::post('/create', [BannerController::class, "store"])->name("banner.store");
+            Route::get('/delete/{id}', [BannerController::class, "delete"])->name("banner.delete");
+        });
         //account
         Route::prefix('/account')->group(function () {
             Route::get('/', [AccountController::class, "index"])->name("account.index");
